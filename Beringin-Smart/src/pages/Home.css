@@ -1,14 +1,15 @@
-/* Home.css - Clara's Edition (SIPRA Mobile) */
+/* Home.css - Responsive Mobile-First Styling for Beringin Smart (Clara's Edition) */
 
+/* Forest Emerald Header Toolbar */
 .home-header-toolbar {
-  --background: linear-gradient(135deg, #09090b 0%, #1e1b4b 60%, #4338ca 100%);
+  --background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%);
   --color: #ffffff;
   --padding-start: 12px;
   --padding-end: 8px;
   --padding-top: 4px;
   --padding-bottom: 4px;
   --min-height: 58px;
-  border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-header-brand {
@@ -19,17 +20,18 @@
 }
 
 .mobile-logo-box {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.45);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .mobile-brand-text {
@@ -43,16 +45,17 @@
   font-size: 1.05rem;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
   line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'Outfit', sans-serif !important;
 }
 
 .mobile-brand-subtitle {
   font-size: 0.68rem;
-  color: #c4b5fd;
+  color: #a7f3d0;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -72,9 +75,9 @@
   align-items: center;
   gap: 6px;
   background: rgba(255, 255, 255, 0.12);
-  padding: 3px 8px 3px 3px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 3px 10px 3px 3px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .mobile-avatar-circle {
@@ -112,38 +115,38 @@
 }
 
 .mobile-logout-btn {
-  --color: #fca5a5;
+  --color: #fecdd3;
   --padding-start: 6px;
   --padding-end: 6px;
   margin: 0;
   height: 36px;
 }
 
-/* Greeting Banner */
+/* Greeting Hero Banner */
 .home-hero-greeting {
   background: #ffffff;
-  border: 1px solid #ede9fe;
-  border-radius: 16px;
-  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 18px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.04);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.04);
 }
 
-/* Mobile Segment Navigation */
+/* Mobile Segment Pill Switcher */
 .mobile-view-segment {
-  background: #ede9fe;
-  border-radius: 12px;
+  background: #e2e8f0;
+  border-radius: 9999px;
   padding: 3px;
   margin-bottom: 14px;
 }
 
 .mobile-view-segment ion-segment-button {
   --background: transparent;
-  --background-checked: #7c3aed;
-  --color: #6d28d9;
-  --color-checked: #ffffff;
+  --background-checked: #ffffff;
+  --color: #64748b;
+  --color-checked: #064e3b;
   --indicator-color: transparent;
-  --border-radius: 10px;
+  --border-radius: 9999px;
   min-height: 38px;
   font-size: 0.82rem;
   font-weight: 700;
@@ -166,27 +169,38 @@
 }
 
 .filter-chip-active {
-  --background: #7c3aed !important;
+  --background: #059669 !important;
   --color: #ffffff !important;
   font-weight: 700;
   margin: 0;
   flex-shrink: 0;
+  border-radius: 9999px;
 }
 
 .filter-chip-inactive {
   --background: #ffffff !important;
-  --color: #6b21a8 !important;
-  border: 1px solid #e9d5ff !important;
+  --color: #64748b !important;
+  border: 1px solid #e2e8f0 !important;
   margin: 0;
   flex-shrink: 0;
+  border-radius: 9999px;
 }
 
-/* Ticket Item */
+/* Ticket Card with Left Accent Border */
 .ticket-card-hover {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1.5px solid #f3e8ff;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1.5px solid #e2e8f0;
+  border-left: 5px solid #059669;
   border-radius: 16px;
   margin-bottom: 10px;
+}
+
+.ticket-card-hover.pending {
+  border-left-color: #f59e0b;
+}
+
+.ticket-card-hover.completed {
+  border-left-color: #10b981;
 }
 
 .ticket-card-hover:active {
@@ -194,15 +208,16 @@
 }
 
 .ticket-card-hover:hover {
-  border-color: #c084fc;
-  box-shadow: 0 6px 18px -2px rgba(124, 58, 237, 0.12);
+  border-color: #a7f3d0;
+  border-left-width: 6px;
+  box-shadow: 0 8px 20px -2px rgba(5, 150, 105, 0.12);
 }
 
 .empty-state-box {
   text-align: center;
-  padding: 32px 16px;
+  padding: 34px 16px;
   background: #ffffff;
-  border-radius: 16px;
-  border: 2px dashed #e9d5ff;
-  color: #a855f7;
+  border-radius: 18px;
+  border: 2px dashed #cbd5e1;
+  color: #94a3b8;
 }

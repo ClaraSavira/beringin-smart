@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the application's database for Beringin Smart (Clara Savira Edition).
      */
     public function run(): void
     {
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $petugas = User::updateOrCreate(
             ['email' => 'petugas@beringin.sch.id'],
             [
-                'name'     => 'Pak Budi Santoso (Koordinator Sarpras)',
+                'name'     => 'Ibu Ratna (Petugas Sarpras)',
                 'password' => Hash::make('password123'),
                 'role'     => 'petugas',
             ]
@@ -26,22 +26,32 @@ class DatabaseSeeder extends Seeder
 
         // 2. Akun Siswa (Clara Savira)
         $siswa = User::updateOrCreate(
-            ['email' => 'siswa@beringin.sch.id'],
+            ['email' => 'clara@beringin.sch.id'],
             [
-                'name'     => 'Clara Savira (Siswi XI PPLG)',
+                'name'     => 'Clara Savira (XI PPLG 2)',
                 'password' => Hash::make('password123'),
                 'role'     => 'siswa',
             ]
         );
 
-        // 3. Sampel Tiket Awal
+        // Siswa Umum (Opsional untuk testing multi-siswa)
+        $siswaUmum = User::updateOrCreate(
+            ['email' => 'siswa@beringin.sch.id'],
+            [
+                'name'     => 'Dimas Pratama (XI PPLG 1)',
+                'password' => Hash::make('password123'),
+                'role'     => 'siswa',
+            ]
+        );
+
+        // 3. Data Awal Laporan Pengaduan
         Laporan::updateOrCreate(
-            ['lokasi' => 'Lab Komputer 3'],
+            ['lokasi' => 'Lab Multimedia & RPL'],
             [
                 'user_id'   => $siswa->id,
                 'nama'      => $siswa->name,
                 'kategori'  => 'Laboratorium',
-                'deskripsi' => 'Kabel LAN pada deretan meja 4 putus dan mouse tidak terdeteksi.',
+                'deskripsi' => 'Kabel konektor HDMI proyektor lab goyang dan router Wi-Fi lab sering mati mendadak.',
                 'status'    => 'Menunggu',
             ]
         );
@@ -52,8 +62,19 @@ class DatabaseSeeder extends Seeder
                 'user_id'   => $siswa->id,
                 'nama'      => $siswa->name,
                 'kategori'  => 'Fasilitas Kelas',
-                'deskripsi' => 'Kipas angin plafon berbunyi bising dan stopkontak depan longgar.',
+                'deskripsi' => 'Kipas angin gantung sisi timur berbunyi keras dan stopkontak dekat papan tulis kendor.',
                 'status'    => 'Sedang Diproses',
+            ]
+        );
+
+        Laporan::updateOrCreate(
+            ['lokasi' => 'Taman Belakang Gedung C'],
+            [
+                'user_id'   => $siswaUmum->id,
+                'nama'      => $siswaUmum->name,
+                'kategori'  => 'Lingkungan/Taman',
+                'deskripsi' => 'Kran wastafel cuci tangan patah sehingga air merembes ke jalan setapak.',
+                'status'    => 'Selesai',
             ]
         );
     }

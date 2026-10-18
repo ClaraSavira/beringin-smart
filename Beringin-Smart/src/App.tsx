@@ -7,7 +7,7 @@ import Detail from './pages/Detail';
 import Login from './pages/Login';
 import { LaporanProvider } from './context/LaporanContext';
 
-/* Core CSS & styles tetapkan sama */
+/* Ionic core styles */
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -23,26 +23,16 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => {
-  const isLoggedIn = !!localStorage.getItem('token');
-
   return (
     <IonApp>
       <LaporanProvider>
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/login" element={<Login />} />
-            <Route
-              path="/home"
-              element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />}
-            />
-            <Route
-              path="/detail/:id"
-              element={isLoggedIn ? <Detail /> : <Navigate to="/login" replace />}
-            />
-            <Route
-              path="/"
-              element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />}
-            />
+            <Route path="/home" element={<Home />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="*" element={<Navigate to="/home" replace />} />
           </IonRouterOutlet>
         </IonReactRouter>
       </LaporanProvider>

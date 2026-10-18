@@ -1,109 +1,116 @@
-# SIPRA Mobile — Sistem Informasi Pengaduan Sarpras
+# 🌿 Beringin Smart
 
-> Aplikasi Pelaporan dan Monitoring Sarana Prasarana Sekolah berbasis Mobile (Ionic React) & RESTful API (Laravel 12 + Laravel Sanctum), dikembangkan sesuai Standar Kompetensi Kerja Nasional Indonesia (**SKKNI No. 282 Tahun 2016**).
+> **Sistem Informasi Layanan & Pengaduan Sarana Prasarana Sekolah**  
+> *SMK Negeri 1 Beringin • Kompetensi Keahlian Pengembangan Perangkat Lunak dan Gim (PPLG)*  
+> Disusun oleh: **Clara Savira** ([@ClaraSavira](https://github.com/ClaraSavira))
 
----
-
-## 🌟 Gambaran Singkat Proyek
-
-**SIPRA Mobile** dirancang untuk mendigitalisasi proses pengaduan kerusakan infrastruktur sekolah di lingkungan **SMK Negeri 1 Beringin**. Melalui aplikasi ini, siswa dapat dengan cepat mengirimkan tiket pengaduan kerusakan fasilitas belajar (kelas, laboratorium, sarana umum), sementara tim Sarana dan Prasarana (Sarpras) dapat memverifikasi serta memperbarui status tindak lanjut secara langsung dari genggaman.
-
----
-
-## 🛠️ Stack Teknologi
-
-| Komponen | Framework / Library | Fungsi Utama |
-|:---|:---|:---|
-| **Frontend Mobile** | Ionic Framework v8 + React 19 + TypeScript | Antarmuka mobile-first responsive dengan arsitektur SPA |
-| **Build Tooling** | Vite 8 + CSS Variables Custom Theme | Kompilasi ultra-cepat dan bundle CSS modular |
-| **State & HTTP** | React Context API + Axios | Manajemen data aplikasi dan interceptor Bearer Token |
-| **Backend REST API**| Laravel 12 + PHP 8.3 | Logika bisnis, validasi request, dan role authorization |
-| **Sistem Keamanan** | Laravel Sanctum | Autentikasi berbasis Token JWT / Personal Access Tokens |
-| **Database** | MySQL (Stack Laragon) / SQLite | Penyimpanan relasional data pengguna dan tiket laporan |
+[![Ionic React](https://img.shields.io/badge/Frontend-Ionic%20React%20%2B%20TypeScript-059669?style=for-the-badge&logo=ionic)](https://ionicframework.com/)
+[![Laravel Sanctum](https://img.shields.io/badge/Backend-Laravel%2012%20REST%20API-047857?style=for-the-badge&logo=laravel)](https://laravel.com/)
+[![SKKNI 282/2016](https://img.shields.io/badge/Standard-SKKNI%20No.%20282%2F2016-10b981?style=for-the-badge)](https://kemnaker.go.id/)
 
 ---
 
-## 📁 Struktur Berkas Proyek
+## 📌 Ringkasan Proyek
 
-```text
-D:/Clara/
-├── Beringin-Smart/               # Repositori Aplikasi Frontend (Ionic React)
-│   ├── src/
-│   │   ├── pages/                # Login.tsx, Home.tsx, Detail.tsx
-│   │   ├── context/              # LaporanContext.tsx (Consumer API)
-│   │   ├── services/             # api.ts (Axios Instance & Interceptor)
-│   │   └── theme/                # variables.css (Electric Violet Palette)
-│   ├── index.html
-│   └── package.json
-│
-├── beringin-backend/             # Repositori Layanan Backend (Laravel API)
-│   ├── app/
-│   │   ├── Http/Controllers/     # AuthController.php, LaporanController.php
-│   │   └── Models/               # User.php, Laporan.php
-│   ├── database/                 # Migrasi & DatabaseSeeder.php
-│   ├── routes/api.php            # Deklarasi Endpoint Publik & Proteksi Sanctum
-│   └── config/cors.php           # Pengaturan Cross-Origin Resource Sharing
-│
-└── README.md                     # Dokumentasi Resmi Proyek
+**Beringin Smart** merupakan aplikasi multi-platform (Web & Mobile PWA) yang dirancang untuk memfasilitasi pelaporan kendala sarana dan prasarana di lingkungan SMKN 1 Beringin secara transparan, akurat, dan cepat. Aplikasi ini mengintegrasikan antarmuka modern berbasis **Ionic React TypeScript** dengan backend **Laravel 12 REST API** yang diproteksi autentikasi token **Laravel Sanctum**.
+
+### 🌟 Fitur Utama
+1. **Autentikasi & Otorisasi Berbasis Peran (Role-Based Access Control)**
+   - Siswa: Mengajukan laporan sarana, memantau riwayat & status penanganan secara real-time.
+   - Petugas Sarpras: Memantau seluruh tiket masuk dari semua siswa dan memverifikasi penanganan (mengubah status menjadi *Selesai*).
+2. **Desain Mobile-First & Responsif**
+   - Menggunakan tipografi modern *Outfit & Inter* dengan palet warna *Nordic Emerald & Slate*.
+   - Navigasi segment pill yang ramah sentuhan (touch-friendly) untuk perangkat smartphone.
+   - Kolom split 2-arah otomatis untuk tampilan desktop layar lebar.
+3. **Pencarian & Filter Cepat (Instant Filtering)**
+   - Pencarian real-time berdasarkan ruangan, nama pelapor, atau rincian kerusakan.
+   - Filter cepat berdasarkan kategori fasilitas (*Fasilitas Kelas*, *Laboratorium*, *Lingkungan/Taman*).
+
+---
+
+## 🏗️ Arsitektur Sistem
+
+```mermaid
+graph TD
+    Client[📱 Frontend Ionic React] -->|HTTP Bearer Token| Gateway[🌐 Laravel API Gateway]
+    Gateway --> Auth[🔐 Sanctum Auth Middleware]
+    Gateway --> CORS[🚦 CORS Handler]
+    Auth --> Controller[⚙️ Laporan Controller]
+    Controller --> Policy{🛡️ Role Check}
+    Policy -->|Role: Siswa| ReadWrite[Buat & Lihat Tiket]
+    Policy -->|Role: Petugas| Approve[Verifikasi & Selesaikan Tiket]
+    ReadWrite --> DB[(🗄️ Database MySQL / SQLite)]
+    Approve --> DB
 ```
 
 ---
 
-## ⚡ Panduan Instalasi & Eksekusi Cepat
+## ⚙️ Petunjuk Instalasi & Menjalankan
 
-### 1. Inisialisasi Backend Server (Laravel)
-```bash
-# Pindah ke direktori backend
-cd beringin-backend
-
-# Jalankan migrasi dan isi data awal pengujian (Seeder)
-php artisan migrate:fresh --seed
-
-# Hidupkan server API lokal
-php artisan serve
-```
-*Server REST API akan aktif di alamat:* `http://localhost:8000/api`
-
-### 2. Inisialisasi Frontend Mobile (Ionic React)
-```bash
-# Buka jendela terminal baru lalu masuk ke direktori frontend
-cd Beringin-Smart
-
-# Jalankan server pengembangan Vite
-npm run dev
-```
-*Aplikasi mobile siap diakses melalui peramban web di:* `http://localhost:5173` atau `http://localhost:8100`
+### Persyaratan Lingkungan
+- **Node.js**: v18.0.0 atau lebih baru
+- **PHP**: v8.2 atau lebih baru
+- **Composer**: v2.5 atau lebih baru
+- **Laragon / XAMPP / MySQL Server**
 
 ---
 
-## 📡 Dokumentasi Endpoint REST API
+### Langkah 1: Konfigurasi Backend (`beringin-backend`)
 
-### 🔓 Rute Publik
-- `POST /api/login` : Autentikasi kredensial pengguna dan mengembalikan Sanctum Bearer Token.
-- `GET /api/laporan` : Mendapatkan seluruh daftar riwayat pengaduan fasilitas.
-- `POST /api/laporan` : Mengirim tiket pengaduan baru dari pelapor (siswa).
-
-### 🔒 Rute Terproteksi (`auth:sanctum`)
-- `POST /api/logout` : Menghapus token sesi aktif (*revoke token*).
-- `GET /api/me` : Membaca profil pengguna yang sedang login.
-- `PATCH /api/laporan/{id}/status` : Mengubah status penanganan menjadi 'Selesai'.  
-  *(Hanya diizinkan untuk akun dengan peran `petugas`. Permintaan tanpa hak akses ditolak dengan respon **HTTP 403 Forbidden**)*.
+1. Pindah ke direktori backend:
+   ```bash
+   cd beringin-backend
+   ```
+2. Salin environment file dan generate key (jika baru di-clone):
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+3. Lakukan migrasi database dan generate data awal (seeder):
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
+4. Jalankan server API backend:
+   ```bash
+   php artisan serve
+   ```
+   *Base URL API:* `http://localhost:8000/api`
 
 ---
 
-## 👥 Akun Uji Coba (Kredensial Default)
+### Langkah 2: Konfigurasi Frontend (`Beringin-Smart`)
 
-| Tipe Akun | Alamat Surel | Kata Sandi | Otoritas / Peran |
-|:---|:---|:---|:---|
-| **Siswa** | `siswa@beringin.sch.id` | `password123` | Mengisi tiket pengaduan, melihat status tiket terkini. |
-| **Petugas Sarpras** | `petugas@beringin.sch.id` | `password123` | Melihat seluruh tiket, memiliki wewenang menandai status 'Selesai'. |
+1. Buka terminal baru dan masuk ke folder frontend:
+   ```bash
+   cd Beringin-Smart
+   ```
+2. Pasang dependensi paket:
+   ```bash
+   npm install
+   ```
+3. Mulai development server:
+   ```bash
+   npm run dev
+   ```
+   *Aplikasi terbuka di:* `http://localhost:5173` atau `http://localhost:8100`
 
 ---
 
-## 👩‍💻 Tim Pengembang
+## 👥 Kredensial Pengguna (Data Bawaan Seeder)
 
-- **Nama Pengembang** : Clara Savira
-- **Konsentrasi Keahlian** : Pengembangan Perangkat Lunak dan Gim (PPLG)
-- **Institusi** : SMK Negeri 1 Beringin
-- **Surel** : `clarasavira784@gmail.com`
-- **GitHub** : [@ClaraSavira](https://github.com/ClaraSavira)
+| Hak Akses | Alamat Email | Kata Sandi | Wewenang Sistem |
+| :--- | :--- | :--- | :--- |
+| **Petugas Sarpras** | `petugas@beringin.sch.id` | `password123` | Akses verifikasi penuh & penutupan tiket selesai |
+| **Siswa (Clara Savira)** | `clara@beringin.sch.id` | `password123` | Input laporan sarana & pelacakan status penanganan |
+| **Siswa (Umum)** | `siswa@beringin.sch.id` | `password123` | Input laporan sarana umum |
+
+---
+
+## 🔒 Standar Keamanan & Validasi (SKKNI 282/2016)
+
+- **Sanctum Authentication**: Akses setiap endpoint dilindungi via header `Authorization: Bearer <TOKEN>`.
+- **Role Guard Server-Side**: Proteksi tingkat server pada `PATCH /api/laporan/{id}/status` mengembalikan respon `403 Forbidden` apabila siswa mencoba memperbarui status tiket.
+- **Client Route Protection**: Token diperiksa secara otomatis pada mount halaman; sesi yang belum terautentikasi otomatis diarahkan ke formulir masuk.
+
+---
+*© 2026-2027 SMK Negeri 1 Beringin — Tugas Mandiri Integrasi Sistem Fullstack Mobile & Backend.*
