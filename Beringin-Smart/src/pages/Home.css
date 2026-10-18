@@ -1,0 +1,208 @@
+/* Home.css - Clara's Edition (SIPRA Mobile) */
+
+.home-header-toolbar {
+  --background: linear-gradient(135deg, #09090b 0%, #1e1b4b 60%, #4338ca 100%);
+  --color: #ffffff;
+  --padding-start: 12px;
+  --padding-end: 8px;
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+  --min-height: 58px;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+.mobile-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.mobile-logo-box {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.45);
+}
+
+.mobile-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.mobile-brand-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-brand-subtitle {
+  font-size: 0.68rem;
+  color: #c4b5fd;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.mobile-header-end {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.mobile-avatar-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3px 8px 3px 3px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.mobile-avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.mobile-user-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #ffffff;
+  max-width: 75px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 390px) {
+  .mobile-user-name {
+    display: none;
+  }
+  .mobile-avatar-pill {
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+}
+
+.mobile-logout-btn {
+  --color: #fca5a5;
+  --padding-start: 6px;
+  --padding-end: 6px;
+  margin: 0;
+  height: 36px;
+}
+
+/* Greeting Banner */
+.home-hero-greeting {
+  background: #ffffff;
+  border: 1px solid #ede9fe;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.04);
+}
+
+/* Mobile Segment Navigation */
+.mobile-view-segment {
+  background: #ede9fe;
+  border-radius: 12px;
+  padding: 3px;
+  margin-bottom: 14px;
+}
+
+.mobile-view-segment ion-segment-button {
+  --background: transparent;
+  --background-checked: #7c3aed;
+  --color: #6d28d9;
+  --color-checked: #ffffff;
+  --indicator-color: transparent;
+  --border-radius: 10px;
+  min-height: 38px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Category Filter Scroll */
+.category-filter-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-top: 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip-active {
+  --background: #7c3aed !important;
+  --color: #ffffff !important;
+  font-weight: 700;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.filter-chip-inactive {
+  --background: #ffffff !important;
+  --color: #6b21a8 !important;
+  border: 1px solid #e9d5ff !important;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Ticket Item */
+.ticket-card-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1.5px solid #f3e8ff;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.ticket-card-hover:active {
+  transform: scale(0.98);
+}
+
+.ticket-card-hover:hover {
+  border-color: #c084fc;
+  box-shadow: 0 6px 18px -2px rgba(124, 58, 237, 0.12);
+}
+
+.empty-state-box {
+  text-align: center;
+  padding: 32px 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px dashed #e9d5ff;
+  color: #a855f7;
+}

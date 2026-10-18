@@ -1,0 +1,167 @@
+/**
+ * SIPRA Mobile - Clara's Edition
+ * Design System: Electric Violet & Cosmic Indigo
+ * Font: Outfit & Inter
+ */
+
+:root {
+  --font-family-base: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Primary Palette (Electric Violet & Indigo) */
+  --ion-color-primary: #7c3aed;
+  --ion-color-primary-rgb: 124, 58, 237;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #6d28d9;
+  --ion-color-primary-tint: #8b5cf6;
+
+  /* Secondary / Cosmic Dark */
+  --ion-color-secondary: #1e1b4b;
+  --ion-color-secondary-rgb: 30, 27, 75;
+  --ion-color-secondary-contrast: #ffffff;
+
+  /* Success (Teal / Emerald) */
+  --ion-color-success: #059669;
+  --ion-color-success-rgb: 5, 150, 105;
+  --ion-color-success-contrast: #ffffff;
+
+  /* Warning (Rose / Amber) */
+  --ion-color-warning: #f59e0b;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #ffffff;
+
+  /* Danger (Crimson) */
+  --ion-color-danger: #e11d48;
+  --ion-color-danger-rgb: 225, 29, 72;
+  --ion-color-danger-contrast: #ffffff;
+
+  /* Backgrounds */
+  --ion-background-color: #faf5ff;
+  --ion-card-background: #ffffff;
+  
+  /* Gradients */
+  --bg-gradient-header: linear-gradient(135deg, #09090b 0%, #1e1b4b 60%, #4338ca 100%);
+  --bg-gradient-primary: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  --bg-gradient-card-purple: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+  --bg-gradient-card-amber: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  --bg-gradient-card-teal: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+
+  /* Shadows */
+  --card-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 12px 30px -4px rgba(124, 58, 237, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
+}
+
+/* Global Font Override */
+* {
+  font-family: var(--font-family-base) !important;
+}
+
+body {
+  background-color: #faf5ff;
+  color: #1e1b4b;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism & Modern Card Styling */
+.bs-glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(221, 214, 254, 0.7);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Metric / Stat Cards */
+.bs-metric-card {
+  border-radius: 18px;
+  border: 1px solid rgba(221, 214, 254, 0.8);
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.05);
+  transition: all 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Custom Status Pills */
+.bs-badge-pending {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bs-badge-completed {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Pulsing Dot Indicator */
+.bs-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  animation: bs-pulse 1.8s infinite;
+}
+
+@keyframes bs-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+/* Modern Form Elements */
+.bs-form-card {
+  border-radius: 18px;
+  border: 1px solid #e9d5ff;
+  box-shadow: var(--card-shadow);
+  background: #ffffff;
+}
+
+/* Buttons */
+.bs-btn-primary {
+  --background: var(--bg-gradient-primary);
+  --box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  --border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+}
+
+/* Clean Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf5ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8b4fe;
+  border-radius: 4px;
+}
