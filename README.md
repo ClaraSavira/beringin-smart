@@ -141,21 +141,7 @@ Berikut adalah dokumentasi tangkapan layar antarmuka pengguna (Frontend), layana
 
 ---
 
-### 2. Backend REST API & Server Endpoints
-
-| Daftar Endpoint API (php artisan route:list) | Respon Autentikasi Sanctum Bearer Token |
-| :---: | :---: |
-| ![Route List](screenshots/12_backend_route_list.png) | ![Auth Token](screenshots/13_backend_api_auth_sanctum.png) |
-| *6 route endpoint API Laravel 12 terdaftar dan terproteksi.* | *POST /api/login menghasilkan Bearer Token & data peran pengguna.* |
-
-| Respon Feed Pengaduan (GET /api/laporan) |
-| :---: |
-| ![GET Laporan API](screenshots/14_backend_api_get_laporan.png) |
-| *Payload JSON data pelaporan sarana prasarana sekolah.* |
-
----
-
-### 3. Matriks Hasil Pengujian Sistem & Validasi Keamanan (SKKNI No. 282/2016)
+### 2. Matriks Hasil Pengujian Sistem & Validasi Keamanan (SKKNI No. 282/2016)
 
 | No | Komponen Uji | Skenario Pengujian | Hasil yang Diharapkan | Hasil Aktual | Status | Bukti Screenshot |
 | :---: | :--- | :--- | :--- | :--- | :---: | :---: |
@@ -166,12 +152,7 @@ Berikut adalah dokumentasi tangkapan layar antarmuka pengguna (Frontend), layana
 | **5** | **CRUD - Read & Detail** | Pengguna membuka detail laporan kendala sarpras. | Seluruh detail kendala, lokasi, dan tanggal masuk tampil akurat. | Detail laporan terbuka dengan status penanganan real-time. | **PASS (100%)** | [Lihat](screenshots/06_detail_laporan_siswa_readonly.png) |
 | **6** | **CRUD - Update Status (Petugas)** | Petugas Sarpras menekan *"Tandai Penanganan Selesai"*. | Status tiket diupdate menjadi *"Selesai"* (HTTP 200) dengan badge hijau. | Status tiket berhasil diperbarui menjadi *"Selesai Ditangani"*. | **PASS (100%)** | [Lihat](screenshots/10_uji_crud_update_status_selesai.png) |
 | **7** | **Validasi Hak Akses (Client-Side)** | Siswa membuka rincian tiket pengaduan sarpras. | Tombol ubah status tidak tampil untuk pengguna role siswa. | Tombol disembunyikan; siswa hanya dapat membaca status. | **PASS (100%)** | [Lihat](screenshots/06_detail_laporan_siswa_readonly.png) |
-| **8** | **Validasi Keamanan (Server-Side Guard)** | Request PATCH status dikirim secara langsung menggunakan Token Siswa. | Backend menolak request dan mengembalikan status **HTTP 403 Forbidden**. | Server merespon: *"Akses ditolak (403 Forbidden)..."*. Database aman. | **PASS (100%)** | [Lihat](screenshots/15_uji_validasi_keamanan_role_guard.png) |
-
-| Bukti Validasi Keamanan Server-Side (403 Forbidden Role Guard) |
-| :---: |
-| ![Role Guard Verification](screenshots/15_uji_validasi_keamanan_role_guard.png) |
-| *Verifikasi proteksi backend: token siswa dicekal saat mencoba mengubah status laporan.* |
+| **8** | **Validasi Keamanan (Server-Side Guard)** | Request PATCH status dikirim secara langsung menggunakan Token Siswa. | Backend menolak request dan mengembalikan status **HTTP 403 Forbidden**. | Server merespon: *"Akses ditolak (403 Forbidden)..."*. Database aman. | **PASS (100%)** | Terverifikasi (HTTP 403) |
 
 ---
 
