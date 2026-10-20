@@ -39,7 +39,7 @@ graph TD
     Controller --> Policy{🔒 Role Check}
     Policy -->|Role: Siswa| ReadWrite[Buat & Lihat Tiket]
     Policy -->|Role: Petugas| Approve[Verifikasi & Selesaikan Tiket]
-    ReadWrite --> DB[(🗄️ Database SQLite)]
+    ReadWrite --> DB[(🗄️ Database MySQL)]
     Approve --> DB
 `
 
